@@ -1,5 +1,6 @@
 import numpy as np
 import pandas as pd
+import time
 
 # This function performs AVD dimension reduction to one feature on a given DataFrame, considering either Standard Deviation (SD) or Mean Absolute Deviation (MAD) across a sliding window.
 # The user can specify the metric to use (default is MAD), the window size and increment.
@@ -54,6 +55,7 @@ def calculate_AVD_feature(df, metric='MAD', w_size=10, w_incre=1):
     # Add the time points as an index to the DataFrame
     metrics_df['Time Point'] = time_points
     metrics_df.set_index('Time Point', inplace=True)
+
 
     # Return the DataFrame containing the calculated complexity metric values
     return metrics_df

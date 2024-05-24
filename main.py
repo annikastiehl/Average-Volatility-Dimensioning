@@ -1,7 +1,9 @@
 import numpy as np
 import pandas as pd
 import os
-from AVD import calculate_AVD_feature
+import time
+from AVD_function import calculate_AVD_feature
+from AVD_function_optimized import calculate_AVD_feature_optimized
 from lazypredict.Supervised import LazyClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder
@@ -9,8 +11,8 @@ from sklearn.preprocessing import LabelEncoder
 # This is the main function that performs the AVD dimension-reduction and the classification on this feature
 # The user can specify the dataset ("Movement", "Sports" or "Hydraulic") and the metric ("MAD" OR "SD"), the window size and increment for the calculate_AVD_feature function
 
-def Classification_with_AVD_Feature(dataset = "Movement", metric = "MAD", w_size=10, w_incre=1):
-    # Imorting the data
+def Classification_with_AVD_Feature(dataset = "Hydraulic", metric = "MAD", w_size=10, w_incre=1):
+    # Importing the data
     path_data = f'data/{dataset}_aggregated_data.csv'
     data = pd.read_csv(path_data)
 
@@ -37,18 +39,26 @@ def Classification_with_AVD_Feature(dataset = "Movement", metric = "MAD", w_size
 
     # Get the cycles
     cycles = normalized_cycles_data.index.get_level_values('cycle').unique()
-
+    start_time = time.time()
     # Calculate AVD feature per cycle
     for cyc in cycles:
         print(f"Processing cycle: {cyc}")
         cycle_data = normalized_cycles_data.loc[cyc]
 
         # Calculate AVD feature for the cycle
-        avd_for_cycle = calculate_AVD_feature(pd.DataFrame(cycle_data), metric = metric, w_size=w_size, w_incre=w_incre)
+        avd_for_cycle = calculate_AVD_feature_optimized(pd.DataFrame(cycle_data), metric = metric, w_size=w_size, w_incre=w_incre)
 
         # Append the AVD value for each time point to the results list
         for time_point, row in avd_for_cycle.iterrows():
             results_list.append((cyc, time_point) + tuple(row.values))
+
+    # Record the end time
+    end_time = time.time()
+
+    # Calculate and print the elapsed time
+    elapsed_time = end_time - start_time
+    print(f'Time taken for calculation: {elapsed_time:.4f} seconds')
+
 
     # Adjust the columns list by removing 'class'
     columns = ['cycle', 'time'] + [f'{metric}']
@@ -143,7 +153,7 @@ def Classification_with_AVD_Feature(dataset = "Movement", metric = "MAD", w_size
 
 
 # Call function with desired parameters
-Classification_with_AVD_Feature(dataset = "Movement", metric = "MAD", w_size = 10, w_incre = 1)
+Classification_with_AVD_Feature(dataset = "Hydraulic", metric = "MAD", w_size = 10, w_incre = 1)
 
 
 # # Parameters used in the experiments of the paper:
