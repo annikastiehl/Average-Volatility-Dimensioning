@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 import time
 
-def calculate_AVD_feature_optimized(df, metric='MAD', w_size=10, w_incre=1):
+def calculate_AVD_feature(df, metric='MAD', w_size=10, w_incre=1):
     # Initialize the results list
     results = []
 
