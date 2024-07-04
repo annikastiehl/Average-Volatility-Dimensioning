@@ -15,6 +15,11 @@ def Classification_with_AVD_Feature(dataset = "Hydraulic", metric = "MAD", w_siz
     path_data = f'data/{dataset}_aggregated_data.csv'
     data = pd.read_csv(path_data)
 
+    if dataset == "Hydraulic":
+        data['time'] = (data['time'] / 100).astype(int)
+    elif dataset == "Movement":
+        data['time'] = (data['time'] - 1).astype(int)
+        
     # Set "cycle" and "time" as MultiIndex
     data.set_index(['cycle', 'time'], inplace=True)
 
