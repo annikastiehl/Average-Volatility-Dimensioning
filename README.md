@@ -31,7 +31,7 @@ For the currently implemented workflow, the script expects the data to contain
 multiple sensor feature columns  
 `class`
 
-In this repository, a `cycle` denotes one complete multivariate time series sample or recording instance. All rows with the same cycle value belong to the same temporal sequence, while time specifies the order of observations within that sequence. The AVD feature is computed separately for each cycle, and each cycle is later treated as one classification sample. `time` indicates the ordered time step within a given cycle, while 'class' is the label assigned to the entire cycle and is assumed to remain the same for all rows belonging to that cycle.
+In this repository, a `cycle` denotes one complete multivariate time series sample or recording instance. All rows with the same cycle value belong to the same temporal sequence, while time specifies the order of observations within that sequence. The AVD feature is computed separately for each cycle, and each cycle is later treated as one classification sample. `time` indicates the ordered time step within a given cycle, while `class` is the label assigned to the entire cycle and is assumed to remain the same for all rows belonging to that cycle.
 
 Examples of what a cycle could represent:
 
