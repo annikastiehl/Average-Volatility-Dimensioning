@@ -57,7 +57,7 @@ SD
 
 It then calculates pairwise squared differences between the window level feature statistics across all dimensions and averages the upper triangular part of that matrix. The resulting scalar becomes the AVD value for that window.
 
-In this way, AVD produces a single time dependent signal from a multivariate input sequence. :contentReference[oaicite:5]{index=5}
+In this way, AVD produces a single time dependent signal from a multivariate input sequence. 
 
 ### Step 3  Save the reduced representation
 
@@ -65,7 +65,7 @@ The computed AVD values are written to
 
 `output/Data_Processing_<Dataset>/avd_results_<Metric>_<Dataset>.csv`
 
-This file stores the generated AVD sequence together with the corresponding class labels mapped back from the original cycles. :contentReference[oaicite:6]{index=6}
+This file stores the generated AVD sequence together with the corresponding class labels mapped back from the original cycles.
 
 ### Step 4  Reshape for classification
 
@@ -83,26 +83,26 @@ The model comparison results are saved to
 
 `output/Results_<Dataset>/Classification_Result_<Metric>.csv`
 
-This provides a simple benchmark of how informative the AVD based representation is for label prediction. :contentReference[oaicite:8]{index=8}
+This provides a simple benchmark of how informative the AVD based representation is for label prediction. 
 
 ## Repository Structure
 
 ### Main files
 
 `main.py`  
-Main execution script for loading the data, normalizing cycles, generating the AVD signal, reshaping the output, and running the classification comparison. :contentReference[oaicite:9]{index=9}
+Main execution script for loading the data, normalizing cycles, generating the AVD signal, reshaping the output, and running the classification comparison. 
 
 `AVD_function.py`  
-Core implementation of the AVD computation based on sliding window MAD or SD statistics and averaged pairwise squared differences between dimensions. :contentReference[oaicite:10]{index=10}
+Core implementation of the AVD computation based on sliding window MAD or SD statistics and averaged pairwise squared differences between dimensions. 
 
 `data/`  
-Input folder expected to contain aggregated dataset CSV files such as the Movement, Sports, and Hydraulic datasets. :contentReference[oaicite:11]{index=11}
+Input folder expected to contain aggregated dataset CSV files such as the Movement, Sports, and Hydraulic datasets. 
 
 `output/`  
-Output folder used for storing processed AVD features and classification results. :contentReference[oaicite:12]{index=12}
+Output folder used for storing processed AVD features and classification results. 
 
 `LICENSE`  
-Repository license file. The repository currently uses the MIT license. :contentReference[oaicite:13]{index=13}
+Repository license file. The repository currently uses the MIT license.
 
 
 ## AVD method summary
@@ -132,7 +132,7 @@ To run the workflow, each dataset should be prepared as an aggregated CSV file w
 multiple sensor feature columns  
 `class` column
 
-The script assumes that each cycle corresponds to one full multivariate sequence and that classification labels are constant within each cycle. :contentReference[oaicite:16]{index=16}
+The script assumes that each cycle corresponds to one full multivariate sequence and that classification labels are constant within each cycle. 
 
 ## How to run
 
