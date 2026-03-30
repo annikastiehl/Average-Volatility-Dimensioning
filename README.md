@@ -35,10 +35,10 @@ In this repository, a `cycle` represents one complete multivariate time series s
 
 Examples of what a cycle could represent:
 
-one machine run
-one movement trial
-one recorded activity segment
-one hydraulic system sequence
+one machine run, 
+one movement trial, 
+one recorded activity segment, 
+one hydraulic system sequence, 
 
 The script then adjusts the time index for some datasets and sets `cycle` and `time` as a multi index. 
 
