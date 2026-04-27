@@ -240,7 +240,7 @@ def simulation_data(type, **kwargs):
         if given_MixMatrix_psij:
             if DimNoise != 0:
                 raise ValueError('Input DimNoise will be ignored, since MixMatrix_psij is specified!')
-            DimNoise = MixMatrix_psij.shape[1]
+            DimNoise = MixMatrix_psij.shape[0]
         else:
             if DimNoise != 0:
                 if random_MixMatrix_psij:
