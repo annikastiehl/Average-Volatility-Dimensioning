@@ -356,6 +356,7 @@ def simulation_data(type, **kwargs):
         np.random.seed(seed = 200)
         com_noise = np.dot(MixMatrix_psij.transpose(), norm.ppf(np.random.rand(MixMatrix_psij.shape[0], x_data.shape[1])))
         #com_noise = np.dot(MixMatrix_psij.transpose(), np.random.randn(MixMatrix_psij.shape[0], x_data.shape[1]))
+        com_noise_mean = np.mean(np.square(com_noise))
         com_scale_noise = np.sqrt(signal_mean / com_noise_mean * (10 ** (-ComponentNoise / 10)))
         data += com_scale_noise * com_noise
 
